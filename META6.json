@@ -16,7 +16,7 @@
     "Opt::Handler" : "lib/Opt/Handler.rakumod"
   },
   "resources" : [ ],
-  "source-url" : "",
+  "source-url" : "https://github.com/tbrowder/Opt-Handler.git",
   "tags" : [ ],
   "test-depends" : [ ],
   "version" : "0.0.1"

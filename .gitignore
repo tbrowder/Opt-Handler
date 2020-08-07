@@ -1,2 +1,5 @@
 .precomp/
 /Opt-Handler-*
+cf.raku
+get-options-example.raku
+tabbrev.raku

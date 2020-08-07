@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/tbrowder/Opt-Handler/workflows/test/badge.svg)](https://github.com/tbrowder/Opt-Handler/actions)
+
 NAME
 ====
 
@@ -12,7 +14,7 @@ use Opt::Handler;
 # Describe the execution modes of the program. Modes are mutually
 # exclusive, i.e., only one can be used at a time.
 my @modes = [
-    # The first word of each line is the option configuration as used and described
+    # The first word of each line is the option specification as used and described
     # in Getopt::Long. The rest of the text on the line is the help description of
     # the option.
     "init Initialize the framistan",
@@ -32,7 +34,7 @@ my @options = [
 # If there any errors, a neat exception is thrown.
 my $opt = Opt::Handler.new: :@modes, :@options;
 
-# At this point, all captured options and modes are listed
+# At this point, all recoghized and captured options and modes are listed
 # as key/values in hashes $opt.modes and $opt.options.
 
 #==========================================================
@@ -45,10 +47,10 @@ my $debug = $opt.options<debug>;
 
 for $opt.modes.keys {
     my $value = $opt{$_};
-    when /init/ { 
+    when /init/ {
         # you check aplicable options
         my $oval = $opt.options<some-opt>;
-        # 
+        #
         # you provide the handler
         handle-init $value, $oval, :$debug;
     }
