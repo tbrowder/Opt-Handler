@@ -5,6 +5,7 @@
   ],
   "build-depends" : [ ],
   "depends" : [
+    "Abbreviations",
     "Text::Utils",
     "Getopt::Long"
   ],
@@ -18,6 +19,8 @@
   "resources" : [ ],
   "source-url" : "https://github.com/tbrowder/Opt-Handler.git",
   "tags" : [ ],
-  "test-depends" : [ ],
-  "version" : "0.0.1"
+  "test-depends" : [
+    "Test::META"
+  ],
+  "version" : "0.0.2"
 }

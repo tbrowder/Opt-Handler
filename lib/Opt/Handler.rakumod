@@ -1,6 +1,6 @@
 use Abbreviations;
 
-unit class Opt::Handler:ver<0.0.1>:auth<cpan:TBROWDER>;
+unit class Opt::Handler:ver<0.0.2>:auth<cpan:TBROWDER>;
 
 has @.modes;
 has @.options;
@@ -47,60 +47,6 @@ method modes() {
 method options() {
     %.options;
 }
-
-=begin comment
-# moving to its own module Abbreviations with exported multi "abbreviations"
-sub get-abbrevs(@w, :$clean-dups --> Hash) is export {
-    # Given a list of words, determine the shortest unique abbreviation
-    # for each subset of words with the same intial character. The results
-    # must be the same number of characters for each initial character. 
-    # Return a hash of the input words as keys whose value is
-    # a space-separated string
-    # of their unique abbreviations, if any.
-    
-    # Get the max number of characters needed.
-    # If the number of characters in a word is equal or less,
-    # then it has no abbreviation.
-    # NOTE: Use the ':$clean-dups' option to ensure there are
-    # no duplicate words if needed.
-    if $clean-dups {
-        my %w;
-        %w{$_} = 1 for @w;
-        @w = %w.keys.sort;
-    }
-
-    my $achars = auto-abbreviation @w.join(' ');
-    my %w;
-    for @w -> $w {
-        %w{$w} = '';
-        my $nc = $w.chars;
-        if $nc <= $achars {
-           # no abbreviation
-           next;
-        }
-        my $len = $achars;
-        while $len < $nc {
-            my $a = $w.substr(0, $len);
-            %w{$w} ~= " $a";
-            ++$len
-        }
-    }
-    %w;
-}
-
-sub auto-abbreviation(Str $string --> UInt) is export {
-    # Given a string consisting of words, return the minimum number
-    # of characters to abbreviate the set.
-    # WARNING: Inf is returned if there are duplicate words in the string,
-    # so the user is warned to avoid that or catch the error exception.
-    # 
-    # Source: http://rosettacode.org/?
-    return Nil unless my @words = $string.words;
-    return $_ if @words>>.substr(0, $_).Set == @words for 1 .. @words>>.chars.max;
-    return Inf;
-}
-# moving to its own module Abbreviations with exported multi "abbreviations"
-=end comment
 
 # a private method?
 method !handle-args() {
@@ -157,7 +103,7 @@ for $opt.modes.keys {
     when /init/ {
         # you check aplicable options
         my $oval = $opt.options<some-opt>;
-        #
+
         # you provide the handler
         handle-init $value, $oval, :$debug;
     }
@@ -171,16 +117,27 @@ for $opt.modes.keys {
 
 =head1 DESCRIPTION
 
-Opt::Handler is ...
+Opt::Handler provides an easy way to start a I<CLI> (Command Line
+Interface) program by wrapping lots of boiler-plate code behind the
+scenes in a wrapper around Raku module C<Getopt::Long>.
+
+It should be useful for those who aren't handy with the native CLI
+support already in Raku (which has improved greatly in the years since
+it was first released) but is still a little too tedious to set up for
+those with years of experience with building CLI tools in C<Perl>.
 
 =head1 AUTHOR
 
 Tom Browder <tom.browder@gmail.com>
 
+=head1 CREDITS
+
+=item Leon Timmermans (aka @Leont) for inspiration from his Raku module C<Getopt::Long>.
+
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2020 Tom Browder
+Copyright  &#x00A9; 2020 Tom Browder
 
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+This library is free software; you can redistribute it or modify it under the Artistic License 2.0.
 
 =end pod

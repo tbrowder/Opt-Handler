@@ -50,7 +50,7 @@ for $opt.modes.keys {
     when /init/ {
         # you check aplicable options
         my $oval = $opt.options<some-opt>;
-        #
+
         # you provide the handler
         handle-init $value, $oval, :$debug;
     }
@@ -64,17 +64,24 @@ for $opt.modes.keys {
 DESCRIPTION
 ===========
 
-Opt::Handler is ...
+Opt::Handler provides an easy way to start a *CLI* (Command Line Interface) program by wrapping lots of boiler-plate code behind the scenes in a wrapper around Raku module `Getopt::Long`.
+
+It should be useful for those who aren't handy with the native CLI support already in Raku (which has improved greatly in the years since it was first released) but is still a little too tedious to set up for those with years of experience with building CLI tools in `Perl`.
 
 AUTHOR
 ======
 
 Tom Browder <tom.browder@gmail.com>
 
+CREDITS
+=======
+
+  * Leon Timmermans (aka @Leont) for inspiration from his Raku module `Getopt::Long`.
+
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2020 Tom Browder
+Copyright &#x00A9; 2020 Tom Browder
 
-This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+This library is free software; you can redistribute it or modify it under the Artistic License 2.0.
 

@@ -1,6 +1,7 @@
 use Test;
+
 use Opt::Handler;
 
-pass "replace me";
+plan 1;
 
-done-testing;
+use-ok 'Opt::Handler';
