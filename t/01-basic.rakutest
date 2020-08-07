@@ -1,0 +1,6 @@
+use Test;
+use Opt::Handler;
+
+pass "replace me";
+
+done-testing;

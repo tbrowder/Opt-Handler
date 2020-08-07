@@ -1,0 +1,23 @@
+{
+  "auth" : "cpan:TBROWDER",
+  "authors" : [
+    "Tom Browder"
+  ],
+  "build-depends" : [ ],
+  "depends" : [
+    "Text::Utils",
+    "Getopt::Long"
+  ],
+  "description" : "Provides easy, semi-automated CLI argument handling",
+  "license" : "Artistic-2.0",
+  "name" : "Opt::Handler",
+  "perl" : "6.d",
+  "provides" : {
+    "Opt::Handler" : "lib/Opt/Handler.rakumod"
+  },
+  "resources" : [ ],
+  "source-url" : "",
+  "tags" : [ ],
+  "test-depends" : [ ],
+  "version" : "0.0.1"
+}
