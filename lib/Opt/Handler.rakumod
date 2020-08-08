@@ -119,7 +119,7 @@ abbreviations (aliases) over the combined set of your modes and options.
 For example, given the modes and options above the C<help> mode should
 show something like the following:
 
-=head3 Progam execution with no arguments
+=head4 Progam execution with no arguments
 
 =begin code
 $ my-program
@@ -127,7 +127,7 @@ Usage: my-program init | build | inspect | help [options]
    or: my-program ini  | b     | ins     | h    [options]
 =end code 
 
-=head3 Program execution with help
+=head4 Program execution with help
 
 =begin code
 $ my-program -h
@@ -156,9 +156,10 @@ my $opt = Opt::Handler.new: :@modes, :@options;
 At this point, all recognized and captured modes and options are listed
 as key/values in hashes C<$opt.modes> and C<$opt.options>.
 Note each mode and option are considered together to extract
-unique abbreviations which will be shown with the C<help> option.
+unique abbreviations which will be shown with the C<help> option
+as demonstrated in the examples above.
 
-Now start handling your modes and options with your code.
+Now start adding your own code to handle your modes and options.
 You may want to extract multi-use options explicitly
 before handling the modes for convenience as shown in the following example.
 

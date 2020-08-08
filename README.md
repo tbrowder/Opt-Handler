@@ -58,13 +58,13 @@ Each line describes an option in the same manner as the mode lines. If not added
 
 A very helpful feature is the automatic generation of valid and unique abbreviations (aliases) over the combined set of your modes and options. For example, given the modes and options above the `help` mode should show something like the following:
 
-### Progam execution with no arguments
+#### Progam execution with no arguments
 
     $ my-program
     Usage: my-program init | build | inspect | help [options]
        or: my-program ini  | b     | ins     | h    [options]
 
-### Program execution with help
+#### Program execution with help
 
     $ my-program -h
     Usage: my-program <mode> [options]
@@ -82,9 +82,9 @@ We are now ready to instantiate our easy option handler in the following step. I
 
     my $opt = Opt::Handler.new: :@modes, :@options;
 
-At this point, all recognized and captured modes and options are listed as key/values in hashes `$opt.modes` and `$opt.options`. Note each mode and option are considered together to extract unique abbreviations which will be shown with the `help` option.
+At this point, all recognized and captured modes and options are listed as key/values in hashes `$opt.modes` and `$opt.options`. Note each mode and option are considered together to extract unique abbreviations which will be shown with the `help` option as demonstrated in the examples above.
 
-Now start handling your modes and options with your code. You may want to extract multi-use options explicitly before handling the modes for convenience as shown in the following example.
+Now start adding your own code to handle your modes and options. You may want to extract multi-use options explicitly before handling the modes for convenience as shown in the following example.
 
     my $debug = $opt.options<debug>; # for convenience only
     for $opt.modes.keys {
