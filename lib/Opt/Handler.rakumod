@@ -61,16 +61,18 @@ method !handle-args() {
 
 Opt::Handler - Provides easy, semi-automated CLI argument handling
 
-=head1 UNIQUE FEATURES
+=head1 MARQUIS FEATURES
 
 Define one or two lists of valid modes and options as input, instantiate the C<Opt::Handler>
 with the lists as input and get:
 
 =item All defined modes and options in one easy-to-access hash
+=item All modes and options have all valid abbreviations auto-generated and show in help
 =item Automatically generated C<help>
 =item Automatically generated C<debug> option
 =item Automatic error checking
-=item Easier to use than Raku native option handling
+
+And it's easier to set up and use than Raku native option handling.
 
 =head1 
 
@@ -111,6 +113,35 @@ my @options = [
     "verbose         Add one level of verbosity",
 ];
 =end code 
+
+A very helpful feature is the automatic generation of valid and unique
+abbreviations (aliases) over the combined set of your modes and options.
+For exanple, given the modes and options above the C<help> mode should
+show something like the following:
+
+=item Progam execution with no arguments
+=begin code
+$ my-program
+Usage: my-program init | build | inspect | help [options]
+    or
+Usage: my-program ini | b | ins | h [options]
+=end code 
+
+=item Program execution with help
+
+=begin code
+$ my-program -h
+Usage: my-program <mode> [options]
+    Modes:
+      ini|init            Initialize the framistan
+      b  |build           Build the framework
+      ins|inspect [X]     Inspect [building X]
+      h  |help
+
+    Options:
+      v  |verbose           Add one level of verbosity
+      d  |debug             For development
+=end code
 
 We are now ready to instantiate our easy option handler in the 
 following step.

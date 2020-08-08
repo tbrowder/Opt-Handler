@@ -11,12 +11,14 @@ NAME
 
 Opt::Handler - Provides easy, semi-automated CLI argument handling
 
-UNIQUE FEATURES
-===============
+MARQUIS FEATURES
+================
 
 Define one or two lists of valid modes and options as input, instantiate the `Opt::Handler` with the lists as input and get:
 
   * All defined modes and options in one easy-to-access hash
+
+  * All modes and options have all valid abbreviations auto-generated and show in help
 
   * Automatically generated `help`
 
@@ -24,7 +26,7 @@ Define one or two lists of valid modes and options as input, instantiate the `Op
 
   * Automatic error checking
 
-  * Easier to use than Raku native option handling
+And it's easier to set up and use than Raku native option handling.
 
 
 
@@ -53,6 +55,29 @@ Each line describes an option in the same manner as the mode lines. If not added
         # option spec    help text
         "verbose         Add one level of verbosity",
     ];
+
+A very helpful feature is the automatic generation of valid and unique abbreviations (aliases) over the combined set of your modes and options. For exanple, given the modes and options above the `help` mode should show something like the following:
+
+  * Progam execution with no arguments
+
+    $ my-program
+    Usage: my-program init | build | inspect | help [options]
+        or
+    Usage: my-program ini | b | ins | h [options]
+
+  * Program execution with help
+
+    $ my-program -h
+    Usage: my-program <mode> [options]
+        Modes:
+          ini|init            Initialize the framistan
+          b  |build           Build the framework
+          ins|inspect [X]     Inspect [building X]
+          h  |help
+
+        Options:
+          v  |verbose           Add one level of verbosity
+          d  |debug             For development
 
 We are now ready to instantiate our easy option handler in the following step. It will parse the `@*ARGS` array and capture all up until a `--` is found, if any. Any arguments remaining remaining stay in `@*ARGS` but are still available. If there any errors, an exception is thrown.
 
