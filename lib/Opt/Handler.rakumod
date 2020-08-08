@@ -1,6 +1,6 @@
 use Abbreviations;
 
-unit class Opt::Handler:ver<0.0.2>:auth<cpan:TBROWDER>;
+unit class Opt::Handler:ver<0.0.3>:auth<cpan:TBROWDER>;
 
 has @.modes;
 has @.options;
@@ -54,6 +54,8 @@ method !handle-args() {
 
 =begin pod
 
+B<WARNING - THIS MODULE IS IN DRAFT STATE - PLEASE FILE ISSUES FOR FEATURE REQUESTS>
+
 =head1 NAME
 
 Opt::Handler - Provides easy, semi-automated CLI argument handling
@@ -68,18 +70,18 @@ use Opt::Handler;
 # exclusive, i.e., only one can be used at a time.
 my @modes = [
     # The first word of each line is the option specification as used and described
-    # in Getopt::Long. The rest of the text on the line is the help description of
+    # in module B<Getopt::Long>. The rest of the text on the line is the help description of
     # the option.
-    "init Initialize the framistan",
-    "build Build the framework",
-    "inspect:s Inspect building X",
+    "init        Initialize the framistan",
+    "build       Build the framework",
+    "inspect:s   Inspect building X",
 ];
 
 my @options = [
     # Each line desribes an option in the same manner as the mode lines.
     # An option usually modifies a mode.
     # If not added explicitly, two options are alway added automatically: help and debug.
-    "verbose Add one level of verbosity",
+    "verbose     Add one level of verbosity",
 ];
 
 # Parse the @*ARGS list and capture all up until a '--' is found, if any.
@@ -87,7 +89,7 @@ my @options = [
 # If there any errors, a neat exception is thrown.
 my $opt = Opt::Handler.new: :@modes, :@options;
 
-# At this point, all recoghized and captured options and modes are listed
+# At this point, all recognized and captured options and modes are listed
 # as key/values in hashes $opt.modes and $opt.options.
 
 #==========================================================

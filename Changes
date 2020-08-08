@@ -1,6 +1,9 @@
 Revision history for Opt-Handler
 
 {{$NEXT}}
+
+0.0.3  2020-08-08T06:50:49-05:00
+    - Add notice of this module's status
     - Removed travis file
 
 0.0.2  2020-08-07T12:07:19-05:00
