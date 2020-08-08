@@ -66,7 +66,7 @@ Opt::Handler - Provides easy, semi-automated CLI argument handling
 use Opt::Handler;
 =end code 
 
-Describe the execution I<modes> of your CLI program. I<Modes> are mutually
+Describe the execution I<modes> of your CLI program. Modes are mutually
 exclusive options, i.e., only one can be used at a time.
 
 The first word of each line is the option specification as used and described
@@ -83,7 +83,7 @@ my @modes = [
 ];
 =end code 
 
-Describe the options of your CLI program. 
+Describe the I<options> of your CLI program. 
 An option usually modifies a mode.
 
 Each line describes an option in the same manner as the mode lines.
@@ -99,7 +99,7 @@ my @options = [
 We are now ready to instantiate our easy option handler in the 
 following step.
 It will parse the C<@*ARGS> array and capture all up until a C<--> is found, if any.
-Any args remaining remaining stay in C<@*ARGS> but are still available.
+Any arguments remaining remaining stay in C<@*ARGS> but are still available.
 If there any errors, an exception is thrown.
 
 =begin code 
@@ -135,9 +135,9 @@ for $opt.modes.keys {
 
 =head1 DESCRIPTION
 
-Opt::Handler provides an easy way to start a I<CLI> (Command Line
-Interface) program by wrapping lots of boiler-plate code behind the
-scenes in a wrapper around Raku module C<Getopt::Long>.
+B<Opt::Handler> provides an easy way to start a I<CLI> (Command Line
+Interface) program by hiding lots of boiler-plate code behind the
+scenes in a wrapper around Raku module L<B<Getopt::Long>|https://github.com/leont/getopt-long6>.
 
 It should be useful for those who aren't handy with the native CLI
 support already in Raku (which has improved greatly in the years since
@@ -150,7 +150,7 @@ Tom Browder <tom.browder@gmail.com>
 
 =head1 CREDITS
 
-=item Leon Timmermans (aka @Leont) for inspiration from his Raku module C<Getopt::Long>.
+=item Leon Timmermans (aka @Leont) for inspiration from his Raku module L<B<Getopt::Long>|https://github.com/leont/getopt-long6>.
 
 =head1 COPYRIGHT AND LICENSE
 

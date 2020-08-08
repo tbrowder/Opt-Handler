@@ -12,7 +12,7 @@ SYNOPSIS
 
     use Opt::Handler;
 
-Describe the execution *modes* of your CLI program. *Modes* are mutually exclusive options, i.e., only one can be used at a time.
+Describe the execution *modes* of your CLI program. Modes are mutually exclusive options, i.e., only one can be used at a time.
 
 The first word of each line is the option specification as used and described in module [**Getopt::Long**](https://github.com/leont/getopt-long6). The rest of the text on the line is the description to be used with the automatic `help` option.
 
@@ -23,7 +23,7 @@ The first word of each line is the option specification as used and described in
         "inspect:s       Inspect building X",
     ];
 
-Describe the options of your CLI program. An option usually modifies a mode.
+Describe the *options* of your CLI program. An option usually modifies a mode.
 
 Each line describes an option in the same manner as the mode lines. If not added explicitly, two options are alway added automatically: `help` and `debug`.
 
@@ -32,7 +32,7 @@ Each line describes an option in the same manner as the mode lines. If not added
         "verbose         Add one level of verbosity",
     ];
 
-We are now ready to instantiate our easy option handler in the following step. It will parse the `@*ARGS` array and capture all up until a `--` is found, if any. Any args remaining remaining stay in `@*ARGS` but are still available. If there any errors, an exception is thrown.
+We are now ready to instantiate our easy option handler in the following step. It will parse the `@*ARGS` array and capture all up until a `--` is found, if any. Any arguments remaining remaining stay in `@*ARGS` but are still available. If there any errors, an exception is thrown.
 
     my $opt = Opt::Handler.new: :@modes, :@options;
 
@@ -59,7 +59,7 @@ Now start handling your modes and options with your code. You may want to extrac
 DESCRIPTION
 ===========
 
-Opt::Handler provides an easy way to start a *CLI* (Command Line Interface) program by wrapping lots of boiler-plate code behind the scenes in a wrapper around Raku module `Getopt::Long`.
+**Opt::Handler** provides an easy way to start a *CLI* (Command Line Interface) program by hiding lots of boiler-plate code behind the scenes in a wrapper around Raku module [**Getopt::Long**](https://github.com/leont/getopt-long6).
 
 It should be useful for those who aren't handy with the native CLI support already in Raku (which has improved greatly in the years since it was first released) but is still a little too tedious to set up for those with years of experience with building CLI tools in `Perl`.
 
@@ -71,7 +71,7 @@ Tom Browder <tom.browder@gmail.com>
 CREDITS
 =======
 
-  * Leon Timmermans (aka @Leont) for inspiration from his Raku module `Getopt::Long`.
+  * Leon Timmermans (aka @Leont) for inspiration from his Raku module [**Getopt::Long**](https://github.com/leont/getopt-long6).
 
 COPYRIGHT AND LICENSE
 =====================
