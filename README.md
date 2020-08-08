@@ -9,7 +9,7 @@ PLEASE FILE ISSUES FOR FEATURE REQUESTS AND BUGS
 NAME
 ====
 
-Opt::Handler - Provides easy, semi-automated CLI argument handling
+**Opt::Handler** - Provides easy, semi-automated CLI argument handling
 
 MARQUIS FEATURES
 ================

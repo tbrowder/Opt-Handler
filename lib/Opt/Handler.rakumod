@@ -59,7 +59,7 @@ method !handle-args() {
 
 =head1 NAME
 
-Opt::Handler - Provides easy, semi-automated CLI argument handling
+B<Opt::Handler> - Provides easy, semi-automated CLI argument handling
 
 =head1 MARQUIS FEATURES
 
