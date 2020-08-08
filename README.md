@@ -7,14 +7,32 @@ NAME
 
 Opt::Handler - Provides easy, semi-automated CLI argument handling
 
+UNIQUE FEATURES
+===============
+
+Define one or two lists of valid modes and options as input, instantiate the `Opt::Handler` with the lists as input and get:
+
+  * All defined modes and options in one easy-to-access hash
+
+  * Automatically generated `help`
+
+  * Automatically generated `debug` option
+
+  * Automatic error checking
+
+  * Easier to use than Raku native option handling
+
+
+
+
 SYNOPSIS
 ========
 
     use Opt::Handler;
 
-Describe the execution *modes* of your CLI program. Modes are mutually exclusive options, i.e., only one can be used at a time.
+Describe the execution *modes* of your CLI program. Modes are mutually exclusive options, i.e., only one can be used at a time. (A commonly provided option, `help`, is considered a mode in the context of this module.)
 
-The first word of each line is the option specification as used and described in module [**Getopt::Long**](https://github.com/leont/getopt-long6). The rest of the text on the line is the description to be used with the automatic `help` option.
+The first word of each line is the option specification as used and described in module [**Getopt::Long**](https://github.com/leont/getopt-long6). The rest of the text on the line is the description to be used with the automaticallby provided `help` mode.
 
     my @modes = [
         # option spec    help text
@@ -23,9 +41,9 @@ The first word of each line is the option specification as used and described in
         "inspect:s       Inspect building X",
     ];
 
-Describe the *options* of your CLI program. An option usually modifies a mode.
+Describe the *options* of your CLI program. An option usually modifies a mode or otherwise affects program execution.
 
-Each line describes an option in the same manner as the mode lines. If not added explicitly, two options are alway added automatically: `help` and `debug`.
+Each line describes an option in the same manner as the mode lines. If not added explicitly, one option is always added automatically: `debug`.
 
     my @options = [
         # option spec    help text

@@ -60,6 +60,19 @@ B<WARNING - THIS MODULE IS IN DRAFT STATE - PLEASE FILE ISSUES FOR FEATURE REQUE
 
 Opt::Handler - Provides easy, semi-automated CLI argument handling
 
+=head1 UNIQUE FEATURES
+
+Define one or two lists of valid modes and options as input, instantiate the C<Opt::Handler>
+with the lists as input and get:
+
+=item All defined modes and options in one easy-to-access hash
+=item Automatically generated C<help>
+=item Automatically generated C<debug> option
+=item Automatic error checking
+=item Easier to use than Raku native option handling
+
+=head1 
+
 =head1 SYNOPSIS
 
 =begin code 
@@ -68,11 +81,13 @@ use Opt::Handler;
 
 Describe the execution I<modes> of your CLI program. Modes are mutually
 exclusive options, i.e., only one can be used at a time.
+(A commonly provided option, C<help>, is considered a mode
+in the context of this module.)
 
 The first word of each line is the option specification as used and described
 in module L<B<Getopt::Long>|https://github.com/leont/getopt-long6>. 
 The rest of the text on the line is the description to be used with the
-automatic C<help> option.
+automaticallby provided  C<help> mode.
 
 =begin code 
 my @modes = [
@@ -83,11 +98,11 @@ my @modes = [
 ];
 =end code 
 
-Describe the I<options> of your CLI program. 
-An option usually modifies a mode.
+Describe the I<options> of your CLI program.
+An option usually modifies a mode or otherwise affects program execution.
 
 Each line describes an option in the same manner as the mode lines.
-If not added explicitly, two options are alway added automatically: C<help> and C<debug>.
+If not added explicitly, one option is always added automatically: C<debug>.
 
 =begin code 
 my @options = [
