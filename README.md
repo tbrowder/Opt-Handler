@@ -64,7 +64,7 @@ A very helpful feature is the automatic generation of valid and unique abbreviat
     Usage: my-program init | build | inspect | help [options]
        or: my-program ini  | b     | ins     | h    [options]
 
-#### Program execution with help
+#### Program execution with `help`
 
     $ my-program -h
     Usage: my-program <mode> [options]
@@ -78,7 +78,7 @@ A very helpful feature is the automatic generation of valid and unique abbreviat
           v  |verbose           Add one level of verbosity
           d  |debug             For development
 
-We are now ready to instantiate our easy option handler in the following step. It will parse the `@*ARGS` array and capture all up until a `--` is found, if any. Any arguments remaining remaining stay in `@*ARGS` but are still available. If there any errors, an exception is thrown.
+We are now ready to instantiate our easy option handler in the following step. It will parse the `@*ARGS` array and capture all arguments up until a `--` is found, if any. Any arguments remaining stay in the `@*ARGS` array but are still available. If there any errors, an exception is thrown.
 
     my $opt = Opt::Handler.new: :@modes, :@options;
 

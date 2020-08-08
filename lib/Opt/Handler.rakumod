@@ -127,7 +127,7 @@ Usage: my-program init | build | inspect | help [options]
    or: my-program ini  | b     | ins     | h    [options]
 =end code 
 
-=head4 Program execution with help
+=head4 Program execution with C<help>
 
 =begin code
 $ my-program -h
@@ -145,8 +145,8 @@ Usage: my-program <mode> [options]
 
 We are now ready to instantiate our easy option handler in the 
 following step.
-It will parse the C<@*ARGS> array and capture all up until a C<--> is found, if any.
-Any arguments remaining remaining stay in C<@*ARGS> but are still available.
+It will parse the C<@*ARGS> array and capture all arguments up until a C<--> is found, if any.
+Any arguments remaining stay in the C<@*ARGS> array but are still available.
 If there any errors, an exception is thrown.
 
 =begin code 
