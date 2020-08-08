@@ -1,10 +1,10 @@
 [![Actions Status](https://github.com/tbrowder/Opt-Handler/workflows/test/badge.svg)](https://github.com/tbrowder/Opt-Handler/actions)
 
 WARNING - THIS MODULE IS IN DRAFT STATE 
-========================================
+----------------------------------------
 
-PLEASE FILE ISSUES FOR FEATURE REQUESTS BUGS
---------------------------------------------
+PLEASE FILE ISSUES FOR FEATURE REQUESTS AND BUGS
+------------------------------------------------
 
 NAME
 ====
