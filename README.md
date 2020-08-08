@@ -12,9 +12,9 @@ SYNOPSIS
 
     use Opt::Handler;
 
-Describe the execution modes of your CLI program. Modes are mutually exclusive, i.e., only one can be used at a time.
+Describe the execution *modes* of your CLI program. *Modes* are mutually exclusive options, i.e., only one can be used at a time.
 
-The first word of each line is the option specification as used and described in module [**Getopt::Long**](https://github.com/leont). The rest of the text on the line is the help description of
+The first word of each line is the option specification as used and described in module [**Getopt::Long**](https://github.com/leont/getopt-long6). The rest of the text on the line is the description to be used with the automatic `help` option.
 
     my @modes = [
         # option spec    help text
@@ -23,20 +23,20 @@ The first word of each line is the option specification as used and described in
         "inspect:s       Inspect building X",
     ];
 
-Describe the options of your CLI program. Modes are mutually exclusive, i.e., only one can be used at a time. An option usually modifies a mode.
+Describe the options of your CLI program. An option usually modifies a mode.
 
-Each line desribes an option in the same manner as the mode lines. If not added explicitly, two options are alway added automatically: `help` and `debug`.
+Each line describes an option in the same manner as the mode lines. If not added explicitly, two options are alway added automatically: `help` and `debug`.
 
     my @options = [
         # option spec    help text
         "verbose         Add one level of verbosity",
     ];
 
-We are now ready to instantiate our easy option handler in the following step. It will parse the `@*ARGS` array and capture all up until a `--` is found, if any. Any args remaining remaining stay in `@*ARGS` but are still available. If there any errors, a neat exception is thrown.
+We are now ready to instantiate our easy option handler in the following step. It will parse the `@*ARGS` array and capture all up until a `--` is found, if any. Any args remaining remaining stay in `@*ARGS` but are still available. If there any errors, an exception is thrown.
 
     my $opt = Opt::Handler.new: :@modes, :@options;
 
-At this point, all recognized and captured options and modes are listed as key/values in hashes `$opt.modes` and `$opt.options`. Note each mode and option are considered together to extract unique abbreviations which will be shown with the `help` option.
+At this point, all recognized and captured modes and options are listed as key/values in hashes `$opt.modes` and `$opt.options`. Note each mode and option are considered together to extract unique abbreviations which will be shown with the `help` option.
 
 Now start handling your modes and options with your code. You may want to extract multi-use options explicitly before handling the modes for convenience as shown in the following example.
 

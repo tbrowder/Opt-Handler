@@ -66,12 +66,13 @@ Opt::Handler - Provides easy, semi-automated CLI argument handling
 use Opt::Handler;
 =end code 
 
-Describe the execution modes of your CLI program. Modes are mutually
-exclusive, i.e., only one can be used at a time.
+Describe the execution I<modes> of your CLI program. I<Modes> are mutually
+exclusive options, i.e., only one can be used at a time.
 
 The first word of each line is the option specification as used and described
-in module L<B<Getopt::Long>|https://github.com/leont>. 
-The rest of the text on the line is the help description of
+in module L<B<Getopt::Long>|https://github.com/leont/getopt-long6>. 
+The rest of the text on the line is the description to be used with the
+automatic C<help> option.
 
 =begin code 
 my @modes = [
@@ -82,11 +83,10 @@ my @modes = [
 ];
 =end code 
 
-Describe the options  of your CLI program. Modes are mutually
-exclusive, i.e., only one can be used at a time.
+Describe the options of your CLI program. 
 An option usually modifies a mode.
 
-Each line desribes an option in the same manner as the mode lines.
+Each line describes an option in the same manner as the mode lines.
 If not added explicitly, two options are alway added automatically: C<help> and C<debug>.
 
 =begin code 
@@ -100,13 +100,13 @@ We are now ready to instantiate our easy option handler in the
 following step.
 It will parse the C<@*ARGS> array and capture all up until a C<--> is found, if any.
 Any args remaining remaining stay in C<@*ARGS> but are still available.
-If there any errors, a neat exception is thrown.
+If there any errors, an exception is thrown.
 
 =begin code 
 my $opt = Opt::Handler.new: :@modes, :@options;
 =end code 
 
-At this point, all recognized and captured options and modes are listed
+At this point, all recognized and captured modes and options are listed
 as key/values in hashes C<$opt.modes> and C<$opt.options>.
 Note each mode and option are considered together to extract
 unique abbreviations which will be shown with the C<help> option.
