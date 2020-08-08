@@ -87,7 +87,7 @@ in the context of this module.)
 The first word of each line is the option specification as used and described
 in module L<B<Getopt::Long>|https://github.com/leont/getopt-long6>. 
 The rest of the text on the line is the description to be used with the
-automaticallby provided  C<help> mode.
+automatically-provided  C<help> mode.
 
 =begin code 
 my @modes = [
