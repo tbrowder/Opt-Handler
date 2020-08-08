@@ -62,44 +62,61 @@ Opt::Handler - Provides easy, semi-automated CLI argument handling
 
 =head1 SYNOPSIS
 
-=begin code :lang<raku>
-
+=begin code 
 use Opt::Handler;
+=end code 
 
-# Describe the execution modes of the program. Modes are mutually
-# exclusive, i.e., only one can be used at a time.
+Describe the execution modes of your CLI program. Modes are mutually
+exclusive, i.e., only one can be used at a time.
+
+The first word of each line is the option specification as used and described
+in module L<B<Getopt::Long>|https://github.com/leont>. 
+The rest of the text on the line is the help description of
+
+=begin code 
 my @modes = [
-    # The first word of each line is the option specification as used and described
-    # in module B<Getopt::Long>. The rest of the text on the line is the help description of
-    # the option.
-    "init        Initialize the framistan",
-    "build       Build the framework",
-    "inspect:s   Inspect building X",
+    # option spec    help text
+    "init            Initialize the framistan",
+    "build           Build the framework",
+    "inspect:s       Inspect building X",
 ];
+=end code 
 
+Describe the options  of your CLI program. Modes are mutually
+exclusive, i.e., only one can be used at a time.
+An option usually modifies a mode.
+
+Each line desribes an option in the same manner as the mode lines.
+If not added explicitly, two options are alway added automatically: C<help> and C<debug>.
+
+=begin code 
 my @options = [
-    # Each line desribes an option in the same manner as the mode lines.
-    # An option usually modifies a mode.
-    # If not added explicitly, two options are alway added automatically: help and debug.
-    "verbose     Add one level of verbosity",
+    # option spec    help text
+    "verbose         Add one level of verbosity",
 ];
+=end code 
 
-# Parse the @*ARGS list and capture all up until a '--' is found, if any.
-# Any args remaining remaining stay in @*ARGS but are still available.
-# If there any errors, a neat exception is thrown.
+We are now ready to instantiate our easy option handler in the 
+following step.
+It will parse the C<@*ARGS> array and capture all up until a C<--> is found, if any.
+Any args remaining remaining stay in C<@*ARGS> but are still available.
+If there any errors, a neat exception is thrown.
+
+=begin code 
 my $opt = Opt::Handler.new: :@modes, :@options;
+=end code 
 
-# At this point, all recognized and captured options and modes are listed
-# as key/values in hashes $opt.modes and $opt.options.
+At this point, all recognized and captured options and modes are listed
+as key/values in hashes C<$opt.modes> and C<$opt.options>.
+Note each mode and option are considered together to extract
+unique abbreviations which will be shown with the C<help> option.
 
-#==========================================================
-# Now start handling your modes and options with your code.
-#==========================================================
+Now start handling your modes and options with your code.
+You may want to extract multi-use options explicitly
+before handling the modes for convenience as shown in the following example.
 
-# You may want to extract multi-use options explicitly
-# before handling the modes for convenience:
-my $debug = $opt.options<debug>;
-
+=begin code 
+my $debug = $opt.options<debug>; # for convenience only
 for $opt.modes.keys {
     my $value = $opt{$_};
     when /init/ {
@@ -114,7 +131,6 @@ for $opt.modes.keys {
         die "FATAL: Unhandled mode '$_'";
     }
 }
-
 =end code
 
 =head1 DESCRIPTION
