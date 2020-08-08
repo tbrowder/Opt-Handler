@@ -56,16 +56,15 @@ Each line describes an option in the same manner as the mode lines. If not added
         "verbose         Add one level of verbosity",
     ];
 
-A very helpful feature is the automatic generation of valid and unique abbreviations (aliases) over the combined set of your modes and options. For exanple, given the modes and options above the `help` mode should show something like the following:
+A very helpful feature is the automatic generation of valid and unique abbreviations (aliases) over the combined set of your modes and options. For example, given the modes and options above the `help` mode should show something like the following:
 
-  * Progam execution with no arguments
+### Progam execution with no arguments
 
     $ my-program
     Usage: my-program init | build | inspect | help [options]
-        or
-    Usage: my-program ini | b | ins | h [options]
+       or: my-program ini  | b     | ins     | h    [options]
 
-  * Program execution with help
+### Program execution with help
 
     $ my-program -h
     Usage: my-program <mode> [options]

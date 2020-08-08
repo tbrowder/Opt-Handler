@@ -116,18 +116,18 @@ my @options = [
 
 A very helpful feature is the automatic generation of valid and unique
 abbreviations (aliases) over the combined set of your modes and options.
-For exanple, given the modes and options above the C<help> mode should
+For example, given the modes and options above the C<help> mode should
 show something like the following:
 
-=item Progam execution with no arguments
+=head3 Progam execution with no arguments
+
 =begin code
 $ my-program
 Usage: my-program init | build | inspect | help [options]
-    or
-Usage: my-program ini | b | ins | h [options]
+   or: my-program ini  | b     | ins     | h    [options]
 =end code 
 
-=item Program execution with help
+=head3 Program execution with help
 
 =begin code
 $ my-program -h
