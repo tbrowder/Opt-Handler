@@ -1,6 +1,10 @@
 [![Actions Status](https://github.com/tbrowder/Opt-Handler/workflows/test/badge.svg)](https://github.com/tbrowder/Opt-Handler/actions)
 
-**WARNING - THIS MODULE IS IN DRAFT STATE - PLEASE FILE ISSUES FOR FEATURE REQUESTS**
+WARNING - THIS MODULE IS IN DRAFT STATE 
+========================================
+
+PLEASE FILE ISSUES FOR FEATURE REQUESTS BUGS
+--------------------------------------------
 
 NAME
 ====
@@ -32,7 +36,7 @@ SYNOPSIS
 
 Describe the execution *modes* of your CLI program. Modes are mutually exclusive options, i.e., only one can be used at a time. (A commonly provided option, `help`, is considered a mode in the context of this module.)
 
-The first word of each line is the option specification as used and described in module [**Getopt::Long**](https://github.com/leont/getopt-long6). The rest of the text on the line is the description to be used with the automaticallby provided `help` mode.
+The first word of each line is the option specification as used and described in module [**Getopt::Long**](https://github.com/leont/getopt-long6). The rest of the text on the line is the description to be used with the automatically-provided `help` mode.
 
     my @modes = [
         # option spec    help text
